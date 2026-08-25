@@ -8,7 +8,7 @@ console.log('[Debug authController] 3. jwt loaded');
 const prisma = require('../config/prisma');
 console.log('[Debug authController] 4. prisma loaded');
 
-const { v4: uuidv4 } = require('uuid');
+const { randomUUID: uuidv4 } = require('crypto'); 
 const crypto = require('crypto');
 
 let sendResetEmail;
