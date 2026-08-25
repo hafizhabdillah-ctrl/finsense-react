@@ -12,7 +12,13 @@ const voiceRoutes = require('./routes/voiceRoutes');
 const aiRoutes = require('./routes/aiRoutes');
 
 const app = express();
-const unwrapRoute = (route) => route?.default?.default || route?.default || route;
+const unwrapRoute = (route) => {
+  let resolved = route;
+  while (resolved && typeof resolved !== 'function' && resolved.default) {
+    resolved = resolved.default;
+  }
+  return resolved;
+};
 app.use(
   cors({
     origin: '*',
