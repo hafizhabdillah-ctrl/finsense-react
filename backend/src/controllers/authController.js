@@ -11,8 +11,16 @@ console.log('[Debug authController] 4. prisma loaded');
 const { v4: uuidv4 } = require('uuid');
 const crypto = require('crypto');
 
-const { sendResetEmail } = require('../services/emailService');
-console.log('[Debug authController] 5. emailService loaded');
+let sendResetEmail;
+try {
+  sendResetEmail = require('../services/emailService').sendResetEmail;
+  console.log('[Debug authController] 5. emailService loaded');
+} catch (err) {
+  console.error('[Debug authController] Failed to load emailService:', err.message);
+  sendResetEmail = async () => {
+    throw new Error('Email service is currently unavailable.');
+  };
+}
 
 function generateAccessToken(userId) {
   return jwt.sign({ userId }, process.env.JWT_SECRET, { expiresIn: '1h' });
