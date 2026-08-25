@@ -35,7 +35,7 @@ app.use('/api/products', productRoutes);
 app.use('/api/stock-logs', stockLogRoutes);
 app.use('/api/debts', debtRoutes);
 app.use('/api', voiceRoutes);
-app.use('/api/ai', aiRoutes);
+app.use('/api/ai', aiRoutes.default || aiRoutes);
 
 app.get('/api/health', (req, res) => res.json({ status: 'OK' }));
 
