@@ -12,16 +12,23 @@ const voiceRoutes = require('./routes/voiceRoutes');
 const aiRoutes = require('./routes/aiRoutes');
 
 const app = express();
+
 const unwrapRoute = (route, name = 'unknown') => {
+  console.log(`[Debug Route] '${name}' keys:`, Object.keys(route || {}));
+
   let resolved = route;
-  while (resolved && typeof resolved !== 'function' && resolved.default) {
-    resolved = resolved.default;
+  if (resolved && typeof resolved !== 'function') {
+    resolved = resolved.default || resolved.router || resolved;
   }
+
   if (typeof resolved !== 'function') {
-    throw new Error(`[Route Error] Route '${name}' is invalid or missing 'module.exports = router'. Received: ${typeof resolved}`);
+    throw new Error(
+      `[Route Error] Route '${name}' is type '${typeof resolved}'. Received keys: ${JSON.stringify(Object.keys(route || {}))}`
+    );
   }
   return resolved;
 };
+
 app.use(
   cors({
     origin: '*',
