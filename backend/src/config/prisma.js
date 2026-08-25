@@ -1,16 +1,25 @@
 const { PrismaClient } = require('@prisma/client');
 
-console.log('[Debug prisma] Initializing PrismaClient...');
+let prismaInstance;
 
-const prisma =
-  global.prisma ||
-  new PrismaClient({
-    log:
-      process.env.NODE_ENV === 'development'
-        ? ['query', 'error', 'warn']
-        : ['error'],
-  });
+function getPrismaClient() {
+  if (!prismaInstance) {
+    console.log('[Debug prisma] Creating PrismaClient instance...');
+    prismaInstance = new PrismaClient({
+      log:
+        process.env.NODE_ENV === 'development'
+          ? ['query', 'error', 'warn']
+          : ['error'],
+    });
+  }
+  return prismaInstance;
+}
 
-if (process.env.NODE_ENV !== 'production') global.prisma = prisma;
-
-module.exports = prisma;
+module.exports = new Proxy(
+  {},
+  {
+    get(target, prop) {
+      return getPrismaClient()[prop];
+    },
+  }
+);
