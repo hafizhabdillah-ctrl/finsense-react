@@ -13,7 +13,8 @@
     {
       "source": "/api/(.*)",
       "destination": {
-        "service": "backend"
+        "service": "backend",
+        "path": "/api/auth/$1"
       }
     },
     {
