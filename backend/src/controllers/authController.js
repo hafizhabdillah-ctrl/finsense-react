@@ -1,9 +1,18 @@
+console.log('[Debug authController] 1. starting authController');
 const bcrypt = require('bcryptjs');
+console.log('[Debug authController] 2. bcrypt loaded');
+
 const jwt = require('jsonwebtoken');
+console.log('[Debug authController] 3. jwt loaded');
+
 const prisma = require('../config/prisma');
+console.log('[Debug authController] 4. prisma loaded');
+
 const { v4: uuidv4 } = require('uuid');
 const crypto = require('crypto');
+
 const { sendResetEmail } = require('../services/emailService');
+console.log('[Debug authController] 5. emailService loaded');
 
 function generateAccessToken(userId) {
   return jwt.sign({ userId }, process.env.JWT_SECRET, { expiresIn: '1h' });
