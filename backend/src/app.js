@@ -12,10 +12,13 @@ const voiceRoutes = require('./routes/voiceRoutes');
 const aiRoutes = require('./routes/aiRoutes');
 
 const app = express();
-const unwrapRoute = (route) => {
+const unwrapRoute = (route, name = 'unknown') => {
   let resolved = route;
   while (resolved && typeof resolved !== 'function' && resolved.default) {
     resolved = resolved.default;
+  }
+  if (typeof resolved !== 'function') {
+    throw new Error(`[Route Error] Route '${name}' is invalid or missing 'module.exports = router'. Received: ${typeof resolved}`);
   }
   return resolved;
 };
@@ -33,16 +36,16 @@ app.use((req, res, next) => {
   console.log(`[Express] ${req.method} ${req.url}`);
   next();
 });
-app.use('/api/auth', unwrapRoute(authRoutes));
-app.use('/api/umkm', unwrapRoute(umkmRoutes));
-app.use('/api/transactions', unwrapRoute(transactionRoutes));
-app.use('/api/categories', unwrapRoute(categoryRoutes));
-app.use('/api/chat', unwrapRoute(chatRoutes));
-app.use('/api/products', unwrapRoute(productRoutes));
-app.use('/api/stock-logs', unwrapRoute(stockLogRoutes));
-app.use('/api/debts', unwrapRoute(debtRoutes));
-app.use('/api', unwrapRoute(voiceRoutes));
-app.use('/api/ai', unwrapRoute(aiRoutes));
+app.use('/api/auth', unwrapRoute(authRoutes, 'authRoutes'));
+app.use('/api/umkm', unwrapRoute(umkmRoutes, 'umkmRoutes'));
+app.use('/api/transactions', unwrapRoute(transactionRoutes, 'transactionRoutes'));
+app.use('/api/categories', unwrapRoute(categoryRoutes, 'categoryRoutes'));
+app.use('/api/chat', unwrapRoute(chatRoutes, 'chatRoutes'));
+app.use('/api/products', unwrapRoute(productRoutes, 'productRoutes'));
+app.use('/api/stock-logs', unwrapRoute(stockLogRoutes, 'stockLogRoutes'));
+app.use('/api/debts', unwrapRoute(debtRoutes, 'debtRoutes'));
+app.use('/api', unwrapRoute(voiceRoutes, 'voiceRoutes'));
+app.use('/api/ai', unwrapRoute(aiRoutes, 'aiRoutes'));
 
 app.get('/api/health', (req, res) => res.json({ status: 'OK' }));
 
