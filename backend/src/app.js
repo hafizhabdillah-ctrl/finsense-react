@@ -12,6 +12,7 @@ const voiceRoutes = require('./routes/voiceRoutes');
 const aiRoutes = require('./routes/aiRoutes');
 
 const app = express();
+const unwrapRoute = (route) => route?.default?.default || route?.default || route;
 app.use(
   cors({
     origin: '*',
@@ -26,16 +27,16 @@ app.use((req, res, next) => {
   console.log(`[Express] ${req.method} ${req.url}`);
   next();
 });
-app.use('/api/auth', authRoutes);
-app.use('/api/umkm', umkmRoutes);
-app.use('/api/transactions', transactionRoutes);
-app.use('/api/categories', categoryRoutes);
-app.use('/api/chat', chatRoutes);
-app.use('/api/products', productRoutes);
-app.use('/api/stock-logs', stockLogRoutes);
-app.use('/api/debts', debtRoutes);
-app.use('/api', voiceRoutes);
-app.use('/api/ai', aiRoutes.default || aiRoutes);
+app.use('/api/auth', unwrapRoute(authRoutes));
+app.use('/api/umkm', unwrapRoute(umkmRoutes));
+app.use('/api/transactions', unwrapRoute(transactionRoutes));
+app.use('/api/categories', unwrapRoute(categoryRoutes));
+app.use('/api/chat', unwrapRoute(chatRoutes));
+app.use('/api/products', unwrapRoute(productRoutes));
+app.use('/api/stock-logs', unwrapRoute(stockLogRoutes));
+app.use('/api/debts', unwrapRoute(debtRoutes));
+app.use('/api', unwrapRoute(voiceRoutes));
+app.use('/api/ai', unwrapRoute(aiRoutes));
 
 app.get('/api/health', (req, res) => res.json({ status: 'OK' }));
 
