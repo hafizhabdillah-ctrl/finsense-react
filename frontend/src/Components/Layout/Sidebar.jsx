@@ -6,7 +6,6 @@ import { MdDashboard, MdInventory } from 'react-icons/md';
 import { FaCashRegister, FaMoneyBill } from 'react-icons/fa';
 import { FaUserGroup } from 'react-icons/fa6';
 import { LuLogs } from 'react-icons/lu';
-import logo from '../../../images/logo.png';
 
 function Sidebar({ onClose }) {
   const { logout } = useContext(AuthContext);
@@ -47,7 +46,31 @@ function Sidebar({ onClose }) {
       {/* Header dengan tombol close di mobile */}
       <div className='flex items-center justify-between px-4 py-4'>
         <div className='flex items-center'>
-          <img src={logo} alt='logo' className='h-10 w-10 md:h-14 md:w-14' />
+          <svg
+            viewBox='0 0 24 24'
+            xmlns='http://www.w3.org/2000/svg'
+            fill='none'
+            className='h-10 w-10 md:h-14 md:w-14'
+          >
+            <circle cx='12' cy='12' r='2.2' fill='#61DAFB' />
+            <g stroke='#61DAFB' strokeWidth='1.4'>
+              <ellipse cx='12' cy='12' rx='10' ry='4.2' />
+              <ellipse
+                cx='12'
+                cy='12'
+                rx='10'
+                ry='4.2'
+                transform='rotate(60 12 12)'
+              />
+              <ellipse
+                cx='12'
+                cy='12'
+                rx='10'
+                ry='4.2'
+                transform='rotate(120 12 12)'
+              />
+            </g>
+          </svg>
           <h1 className='font-bold py-1 px-2 text-2xl md:text-3xl'>
             Fin<span className='text-orange-300'>Sense</span>
           </h1>
