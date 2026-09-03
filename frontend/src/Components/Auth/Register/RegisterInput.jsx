@@ -61,7 +61,7 @@ const RegisterInput = () => {
     <form onSubmit={handleSubmit} className='w-full'>
       {/* Full Name Input */}
       <div className='mb-4'>
-        <label className='block text-gray-700 font-semibold mb-2 text-left'>
+        <label className='block text-slate-300 font-semibold mb-2 text-left'>
           Nama Lengkap
         </label>
         <input
@@ -69,15 +69,15 @@ const RegisterInput = () => {
           placeholder='Masukkan nama lengkap Anda'
           value={fullName}
           onChange={(e) => setFullName(e.target.value)}
-          className='w-full p-3 text-base border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 transition-colors
-                     text-gray-800 placeholder-gray-400'
+          className='w-full p-3 text-base rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 transition-colors
+                     bg-blue-50/90 text-gray-800 placeholder-gray-500'
           required
         />
       </div>
 
       {/* Email Input */}
       <div className='mb-4'>
-        <label className='block text-gray-700 font-semibold mb-2 text-left'>
+        <label className='block text-slate-300 font-semibold mb-2 text-left'>
           Email
         </label>
         <input
@@ -85,15 +85,15 @@ const RegisterInput = () => {
           placeholder='Masukkan email Anda'
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className='w-full p-3 text-base border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 transition-colors
-                     text-gray-800 placeholder-gray-400'
+          className='w-full p-3 text-base rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 transition-colors
+                     bg-blue-50/90 text-gray-800 placeholder-gray-500'
           required
         />
       </div>
 
       {/* Password Input with Eye Icon */}
       <div className='mb-4'>
-        <label className='block text-gray-700 font-semibold mb-2 text-left'>
+        <label className='block text-slate-300 font-semibold mb-2 text-left'>
           Password
         </label>
         <div className='relative'>
@@ -102,15 +102,15 @@ const RegisterInput = () => {
             placeholder='Masukkan password Anda'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className='w-full p-3 text-base border-2 border-gray-300 rounded-lg 
-                       focus:outline-none focus:ring-2 transition-colors
-                       text-gray-800 placeholder-gray-400'
+            className='w-full p-3 text-base rounded-lg
+                       focus:outline-none focus:ring-2 focus:ring-orange-400 transition-colors
+                       bg-blue-50/90 text-gray-800 placeholder-gray-500'
             required
           />
           <button
             type='button'
             onClick={() => setShowPassword(!showPassword)}
-            className='absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer p-1 hover:bg-gray-100 rounded-full transition-colors'
+            className='absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer p-1 hover:bg-gray-200 rounded-full transition-colors'
             aria-label={
               showPassword ? 'Sembunyikan password' : 'Tampilkan password'
             }
@@ -118,21 +118,21 @@ const RegisterInput = () => {
             {showPassword ? (
               <FaEyeSlash
                 size={20}
-                className='text-gray-500 hover:text-sky-700'
+                className='text-gray-500 hover:text-orange-500'
               />
             ) : (
-              <FaEye size={20} className='text-gray-500 hover:text-sky-700' />
+              <FaEye size={20} className='text-gray-500 hover:text-orange-500' />
             )}
           </button>
         </div>
-        <p className='text-xs text-gray-500 mt-1 text-left'>
+        <p className='text-xs text-slate-400 mt-1 text-left'>
           Password minimal 6 karakter
         </p>
       </div>
 
       {/* Confirm Password Input with Eye Icon */}
       <div className='mb-4'>
-        <label className='block text-gray-700 font-semibold mb-2 text-left'>
+        <label className='block text-slate-300 font-semibold mb-2 text-left'>
           Konfirmasi Password
         </label>
         <div className='relative'>
@@ -141,15 +141,15 @@ const RegisterInput = () => {
             placeholder='Konfirmasi password Anda'
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            className='w-full p-3 text-base border-2 border-gray-300 rounded-lg 
-                       focus:outline-none focus:ring-2 transition-colors
-                       text-gray-800 placeholder-gray-400'
+            className='w-full p-3 text-base rounded-lg
+                       focus:outline-none focus:ring-2 focus:ring-orange-400 transition-colors
+                       bg-blue-50/90 text-gray-800 placeholder-gray-500'
             required
           />
           <button
             type='button'
             onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-            className='absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer p-1 hover:bg-gray-100 rounded-full transition-colors'
+            className='absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer p-1 hover:bg-gray-200 rounded-full transition-colors'
             aria-label={
               showConfirmPassword
                 ? 'Sembunyikan password'
@@ -159,10 +159,10 @@ const RegisterInput = () => {
             {showConfirmPassword ? (
               <FaEyeSlash
                 size={20}
-                className='text-gray-500 hover:text-sky-700'
+                className='text-gray-500 hover:text-orange-500'
               />
             ) : (
-              <FaEye size={20} className='text-gray-500 hover:text-sky-700' />
+              <FaEye size={20} className='text-gray-500 hover:text-orange-500' />
             )}
           </button>
         </div>
@@ -179,9 +179,9 @@ const RegisterInput = () => {
       <button
         type='submit'
         disabled={loading}
-        className='w-full bg-sky-950 text-white font-bold rounded-lg py-3
+        className='w-full bg-orange-500 text-black font-bold rounded-lg py-3
                    cursor-pointer transition-all duration-200
-                   hover:bg-sky-900 active:scale-98
+                   hover:bg-orange-400 active:scale-98
                    disabled:bg-gray-400 disabled:cursor-not-allowed'
       >
         {loading ? (
@@ -216,21 +216,21 @@ const RegisterInput = () => {
       {/* Linebreak */}
       <div className='relative my-6'>
         <div className='absolute inset-0 flex items-center'>
-          <div className='w-full border-t border-gray-300'></div>
+          <div className='w-full border-t border-white/10'></div>
         </div>
         <div className='relative flex justify-center text-sm'>
-          <span className='px-2 bg-white text-gray-500'>atau</span>
+          <span className='px-2 bg-neutral-900 text-slate-400'>atau</span>
         </div>
       </div>
 
       {/* Footer Card - Login */}
-      <p className='text-gray-500 text-center'>
+      <p className='text-slate-400 text-center'>
         Sudah punya akun?{' '}
         <Link
           to='/login'
-          className='text-orange-500 font-bold cursor-pointer hover:text-orange-600 transition-colors'
+          className='text-orange-500 font-bold cursor-pointer hover:text-orange-400 transition-colors'
         >
-          Login disini
+          Masuk di sini
         </Link>
       </p>
     </form>

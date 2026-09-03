@@ -3,12 +3,12 @@ import RegisterInput from '../../Components/Auth/Register/RegisterInput.jsx';
 
 function RegisterPage() {
   return (
-    <div className='min-h-screen flex items-center justify-center bg-gray-200 p-4'>
+    <div className='min-h-screen flex items-center justify-center bg-black p-4'>
       {/* Register Card */}
-      <div className='bg-white p-6 sm:p-8 rounded-2xl shadow-xl w-full max-w-md border border-gray-100'>
+      <div className='bg-neutral-900 p-6 sm:p-8 rounded-2xl shadow-xl w-full max-w-md border border-white/10'>
         <div className='flex flex-col items-center'>
           {/* Logo and Name */}
-          <div className='flex flex-row items-center mb-4'>
+          <div className='flex flex-row items-center'>
             <svg
               viewBox='0 0 24 24'
               xmlns='http://www.w3.org/2000/svg'
@@ -34,15 +34,18 @@ function RegisterPage() {
                 />
               </g>
             </svg>
-            <h1 className='text-2xl sm:text-3xl font-bold text-sky-950'>
-              Fin<span className='text-orange-400'>Sense</span>
+            <h1 className='text-2xl sm:text-3xl font-bold text-white'>
+              Fin<span className='text-orange-500'>Sense</span>
             </h1>
           </div>
+          <p className='mt-1 mb-6 text-xs font-bold uppercase tracking-[0.25em] text-orange-500'>
+            Manajemen UMKM
+          </p>
 
-          <h2 className='text-xl sm:text-2xl font-bold text-sky-950 mb-2 text-center'>
-            Selamat Datang
+          <h2 className='text-xl sm:text-2xl font-bold text-white mb-2 text-center'>
+            Buat akun baru
           </h2>
-          <p className='text-gray-500 text-sm sm:text-base mb-6 text-center'>
+          <p className='text-slate-400 text-sm sm:text-base mb-6 text-center'>
             Buat akun baru untuk manajemen bisnis Anda.
           </p>
 

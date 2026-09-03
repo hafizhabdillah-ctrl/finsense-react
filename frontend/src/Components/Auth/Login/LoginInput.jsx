@@ -55,7 +55,7 @@ const LoginInput = () => {
     <form onSubmit={handleSubmit} className='w-full'>
       {/* Email Input */}
       <div className='mb-4'>
-        <label className='block text-gray-700 font-semibold mb-2 text-left'>
+        <label className='block text-slate-300 font-semibold mb-2 text-left'>
           Email
         </label>
         <input
@@ -63,15 +63,15 @@ const LoginInput = () => {
           placeholder='Masukkan email Anda'
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className='w-full p-3 text-base border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 transition-colors
-                     text-gray-800 placeholder-gray-400'
+          className='w-full p-3 text-base rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400 transition-colors
+                     bg-blue-50/90 text-gray-800 placeholder-gray-500'
           required
         />
       </div>
 
       {/* Password Input with Eye Icon */}
       <div className='mb-4'>
-        <label className='block text-gray-700 font-semibold mb-2 text-left'>
+        <label className='block text-slate-300 font-semibold mb-2 text-left'>
           Password
         </label>
         <div className='relative'>
@@ -80,15 +80,15 @@ const LoginInput = () => {
             placeholder='Masukkan password Anda'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className='w-full p-3 text-base border-2 border-gray-300 rounded-lg 
-                       focus:outline-none focus:ring-2 transition-colors
-                       text-gray-800 placeholder-gray-400'
+            className='w-full p-3 text-base rounded-lg
+                       focus:outline-none focus:ring-2 focus:ring-orange-400 transition-colors
+                       bg-blue-50/90 text-gray-800 placeholder-gray-500'
             required
           />
           <button
             type='button'
             onClick={() => setShowPassword(!showPassword)}
-            className='absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer p-1 hover:bg-gray-100 rounded-full transition-colors'
+            className='absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer p-1 hover:bg-gray-200 rounded-full transition-colors'
             aria-label={
               showPassword ? 'Sembunyikan password' : 'Tampilkan password'
             }
@@ -96,10 +96,10 @@ const LoginInput = () => {
             {showPassword ? (
               <FaEyeSlash
                 size={20}
-                className='text-gray-500 hover:text-sky-700'
+                className='text-gray-500 hover:text-orange-500'
               />
             ) : (
-              <FaEye size={20} className=' text-gray-500 hover:text-sky-700' />
+              <FaEye size={20} className=' text-gray-500 hover:text-orange-500' />
             )}
           </button>
         </div>
@@ -114,19 +114,19 @@ const LoginInput = () => {
 
       {/* Remember Me & Forgot Password - SATU BARIS */}
       <div className='flex flex-row items-center justify-between mb-6'>
-        <label className='flex items-center gap-2 cursor-pointer text-sky-950 font-semibold'>
+        <label className='flex items-center gap-2 cursor-pointer text-slate-300 font-semibold'>
           <input
             type='checkbox'
             checked={rememberMe}
             onChange={(e) => setRememberMe(e.target.checked)}
-            className='w-4 h-4 border-2 border-gray-300 rounded accent-sky-950 
-                       cursor-pointer hover:accent-sky-800 transition-colors'
+            className='w-4 h-4 border-2 border-gray-300 rounded accent-orange-500
+                       cursor-pointer hover:accent-orange-600 transition-colors'
           />
           <span className='select-none'>Ingat Saya</span>
         </label>
         <Link
           to='/lupa-password'
-          className='text-orange-400 font-semibold cursor-pointer hover:text-orange-500 
+          className='text-orange-500 font-semibold cursor-pointer hover:text-orange-400
                      transition-colors'
         >
           Lupa password?
@@ -137,9 +137,9 @@ const LoginInput = () => {
       <button
         type='submit'
         disabled={loading}
-        className='w-full bg-sky-950 text-white font-bold rounded-lg py-3
+        className='w-full bg-orange-500 text-black font-bold rounded-lg py-3
                    cursor-pointer transition-all duration-200
-                   hover:bg-sky-900 active:scale-98
+                   hover:bg-orange-400 active:scale-98
                    disabled:bg-gray-400 disabled:cursor-not-allowed'
       >
         {loading ? (
@@ -174,22 +174,22 @@ const LoginInput = () => {
       {/* Linebreak */}
       <div className='relative my-6'>
         <div className='absolute inset-0 flex items-center'>
-          <div className='w-full border-t border-gray-300'></div>
+          <div className='w-full border-t border-white/10'></div>
         </div>
         <div className='relative flex justify-center text-sm'>
-          <span className='px-2 bg-white text-gray-500'>atau</span>
+          <span className='px-2 bg-neutral-900 text-slate-400'>atau</span>
         </div>
       </div>
 
       {/* Footer Card - Buat Akun Baru */}
-      <p className='text-gray-500 text-center'>
+      <p className='text-slate-400 text-center'>
         Belum punya akun?{' '}
         <Link
           to='/register'
-          className='text-orange-500 font-bold cursor-pointer hover:text-orange-600 
+          className='text-orange-500 font-bold cursor-pointer hover:text-orange-400
                      transition-colors'
         >
-          Buat akun baru
+          Daftar di sini
         </Link>
       </p>
     </form>
