@@ -16,12 +16,6 @@ import DebtPage from './Pages/Features/DebtPage';
 import LogPage from './Pages/Features/LogPage';
 import NewPage from './Pages/NewItem/NewPage';
 
-import NewStock from './Components/Features/Stock/NewStock';
-import NewTransaction from './Components/Features/Transaction/NewTransaction';
-import NewPos from './Components/Features/Pos/NewPos';
-import NewDebt from './Components/Features/Debt/NewDebt';
-import NewLog from './Components/Features/Log/NewLog';
-
 import DetailStock from './Components/Features/Stock/DetailStock';
 import DetailTransaction from './Components/Features/Transaction/DetailTransaction';
 import DetailDebt from './Components/Features/Debt/DetailDebt';
@@ -53,29 +47,24 @@ function App() {
 
           {/* Transaction */}
           <Route path='/transactions' element={<TransactionPage />} />
-          <Route path='/transactions/new/' element={<NewTransaction />} />
           <Route path='/transactions/:id' element={<DetailTransaction />} />
           <Route path='/transactions/edit/:id' element={<EditTransaction />} />
 
           {/* Stock */}
           <Route path='/stocks' element={<StockPage />} />
-          <Route path='/stocks/new' element={<NewStock />} />
           <Route path='/stocks/:id' element={<DetailStock />} />
           <Route path='/stocks/edit/:id' element={<EditStock />} />
 
           {/* POS */}
           <Route path='/pos' element={<PosPage />} />
-          <Route path='/pos/new' element={<NewPos />} />
 
           {/* Debt */}
           <Route path='/debts' element={<DebtPage />} />
-          <Route path='/debts/new' element={<NewDebt />} />
           <Route path='debts/:id' element={<DetailDebt />} />
           <Route path='/debts/edit/:id' element={<EditDebt />} />
 
           {/* Log */}
           <Route path='/logs' element={<LogPage />} />
-          <Route path='/logs/new' element={<NewLog />} />
           <Route path='/logs/:id' element={<DetailLog />} />
           <Route path='/logs/edit/:id' element={<EditLog />} />
         </Route>

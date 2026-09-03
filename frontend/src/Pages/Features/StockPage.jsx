@@ -14,7 +14,7 @@ function StockPage() {
       <div className='flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-4'>
         <h1 className='text-xl md:text-2xl font-bold'>Manajemen Stok</h1>
         <button
-          onClick={() => navigate('/stocks/new')}
+          onClick={() => navigate('/new?type=product')}
           className='flex items-center gap-2 cursor-pointer bg-sky-950 p-2 px-4 text-white font-semibold border rounded-lg hover:bg-white hover:text-sky-950 transition-all'
         >
           <FaCirclePlus size={16} />

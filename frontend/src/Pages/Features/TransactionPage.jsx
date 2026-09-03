@@ -22,7 +22,7 @@ function TransactionPage() {
       <div className='flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2'>
         <h1 className='text-2xl font-bold'>Catatan keuangan</h1>
         <button
-          onClick={() => navigate('/transactions/new')}
+          onClick={() => navigate('/new?type=transaction')}
           className='flex items-center gap-2 bg-sky-950 p-2 px-4 text-white rounded-lg font-semibold border hover:bg-white hover:text-sky-950 transition cursor-pointer'
         >
           <FaCirclePlus size={16} /> Tambah Transaksi
