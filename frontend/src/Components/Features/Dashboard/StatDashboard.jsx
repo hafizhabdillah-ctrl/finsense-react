@@ -29,17 +29,9 @@ const StatDashboard = () => {
         </div>
         <div className='flex-1 bg-white p-4 border rounded-md border-gray-300 shadow-sm'>
           <h2 className='text-gray-500 text-sm font-semibold'>
-            TOTAL TRANSAKSI HARI INI
+            TRANSAKSI HARI INI
           </h2>
           <p className='text-2xl font-bold text-sky-950'>{todayCount}</p>
-        </div>
-        <div className='flex-1 bg-white p-4 border rounded-md border-gray-300 shadow-sm'>
-          <h2 className='text-gray-500 text-sm font-semibold'>
-            RATA-RATA ORDER HARI INI
-          </h2>
-          <p className='text-2xl font-bold text-sky-950'>
-            Rp {averageOrder.toLocaleString()}
-          </p>
         </div>
       </div>
 

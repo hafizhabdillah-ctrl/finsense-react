@@ -38,7 +38,10 @@ function Sidebar({ onClose }) {
       icon: <FaUserGroup size={22} />,
       path: '/debts',
     },
-    { name: 'Log Inventori', icon: <LuLogs size={22} />, path: '/logs' },
+    { name: 'Log Inventori',
+      icon: <LuLogs size={22} />,
+      path: '/logs'
+    },
   ];
 
   return (
@@ -72,7 +75,7 @@ function Sidebar({ onClose }) {
             </g>
           </svg>
           <h1 className='font-bold py-1 px-2 text-2xl md:text-3xl'>
-            Fin<span className='text-orange-300'>Sense</span>
+            Fin<span className='text-orange-400'>Sense</span>
           </h1>
         </div>
         <button
