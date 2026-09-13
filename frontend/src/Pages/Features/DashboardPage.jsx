@@ -2,7 +2,6 @@ import React from 'react';
 import StatDashboard from '../../Components/Features/Dashboard/StatDashboard';
 import GrafikDashboard from '../../Components/Features/Dashboard/GrafikDashboard';
 import StokDashboard from '../../Components/Features/Dashboard/StokDashboard';
-import LakuDashboard from '../../Components/Features/Dashboard/LakuDashboard';
 
 function DashboardPage() {
   return (
@@ -18,12 +17,14 @@ function DashboardPage() {
         })}
       </p>
       <StatDashboard />
-      <div className='flex flex-col lg:flex-row gap-4 mt-4'>
-        <GrafikDashboard />
-        <StokDashboard />
-      </div>
-      <div className='mt-4'>
-        <LakuDashboard />
+      {/* Grafik 3/4 lebar, Rekomendasi Restok 1/4 lebar (desktop) */}
+      <div className='grid grid-cols-1 lg:grid-cols-4 gap-4 mt-4'>
+        <div className='lg:col-span-3'>
+          <GrafikDashboard />
+        </div>
+        <div className='lg:col-span-1'>
+          <StokDashboard />
+        </div>
       </div>
     </div>
   );

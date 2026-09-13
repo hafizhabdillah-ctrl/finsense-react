@@ -25,13 +25,6 @@ ChartJS.register(
 function GrafikDashboard() {
   const { chartData, loading } = useDashboardData();
 
-  if (loading)
-    return (
-      <div className='flex-1 p-4 bg-white rounded-md shadow'>
-        Memuat grafik...
-      </div>
-    );
-
   const data = {
     labels: chartData.dates,
     datasets: [
@@ -48,6 +41,7 @@ function GrafikDashboard() {
 
   const options = {
     responsive: true,
+    maintainAspectRatio: true,
     plugins: {
       legend: { position: 'top' },
       title: { display: true, text: 'Penjualan 7 Hari Terakhir' },
@@ -55,14 +49,14 @@ function GrafikDashboard() {
   };
 
   return (
-    // <div className='flex-1 p-4 bg-white border border-gray-300 rounded-md shadow-sm'>
-    //   <Line data={data} options={options} />
-    // </div>
-    <div className='w-full p-4 bg-white border border-gray-300 rounded-md shadow-sm overflow-x-auto'>
-      <div className='min-w-[300px]'>
-        {' '}
-        <Line data={data} options={{ ...options, maintainAspectRatio: true }} />
-      </div>
+    <div className='w-full h-full p-4 bg-white border border-gray-300 rounded-md shadow-sm overflow-x-auto'>
+      {loading ? (
+        <p className='text-gray-500'>Memuat grafik...</p>
+      ) : (
+        <div className='min-w-[300px]'>
+          <Line data={data} options={options} />
+        </div>
+      )}
     </div>
   );
 }

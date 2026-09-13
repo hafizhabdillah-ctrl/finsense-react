@@ -38,7 +38,7 @@ function Debtpage() {
           placeholder='Cari berdasarkan nama pelanggan...'
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className='w-full p-2 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2'
+          className='w-full p-2 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-950'
         />
         <FaSearch className='absolute left-3 top-3 text-gray-400' />
       </div>

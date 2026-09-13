@@ -1,42 +1,35 @@
 import React, { useMemo } from 'react';
 import { useTransactions } from '../../../hooks/useTransactions';
 
+// Rentang BULAN INI (waktu lokal): tanggal 1 pukul 00:00 s/d tanggal terakhir pukul 23:59:59
+const now = new Date();
+const MONTH_RANGE = {
+  startDate: new Date(now.getFullYear(), now.getMonth(), 1, 0, 0, 0, 0).toISOString(),
+  endDate: new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59, 999).toISOString(),
+};
+
+const isThisMonth = (dateString) => {
+  const d = new Date(dateString);
+  const today = new Date();
+  return d.getFullYear() === today.getFullYear() && d.getMonth() === today.getMonth();
+};
+
 function StatTransaction() {
-  // Filter hanya bulan ini
-  const now = new Date();
-  const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1)
-    .toISOString()
-    .split('T')[0];
-  const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0)
-    .toISOString()
-    .split('T')[0];
+  const { transactions } = useTransactions(MONTH_RANGE);
 
-  const { transactions, loading } = useTransactions({
-    startDate: startOfMonth,
-    endDate: endOfMonth,
-  });
-
+  // Pemasukan, pengeluaran, dan jumlah transaksi BULAN INI
   const totals = useMemo(() => {
-    let income = 0,
-      expense = 0;
+    let income = 0;
+    let expense = 0;
+    let count = 0;
     transactions.forEach((t) => {
+      if (!isThisMonth(t.transaction_date)) return;
+      count += 1;
       if (t.type === 'income') income += t.amount;
       else expense += t.amount;
     });
-    return { income, expense };
+    return { income, expense, count };
   }, [transactions]);
-
-  // Total transaksi bulan ini (bandingkan tahun + bulan, bukan tanggal)
-  const totalTransactionsThisMonth = useMemo(() => {
-    return transactions.filter((t) => {
-      const d = new Date(t.transaction_date);
-      return (
-        d.getFullYear() === now.getFullYear() && d.getMonth() === now.getMonth()
-      );
-    }).length;
-  }, [transactions]);
-
-  // if (loading) {return <div className='flex w-1/2 gap-4 mt-4'>Memuat...</div>};
 
   return (
     <div className='grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4'>
@@ -63,7 +56,7 @@ function StatTransaction() {
           TOTAL TRANSAKSI
         </h1>
         <p className='flex items-center gap-2 text-2xl font-bold text-sky-950'>
-          <span>{totalTransactionsThisMonth}</span>
+          <span>{totals.count}</span>
           <span className='relative text-sm top-1'>Transaksi</span>
         </p>
       </div>

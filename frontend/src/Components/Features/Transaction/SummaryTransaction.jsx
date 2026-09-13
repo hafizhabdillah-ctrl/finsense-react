@@ -114,7 +114,7 @@ function SummaryTransaction() {
   // }
 
   return (
-    <div className='flex flex-col md:flex-row gap-4 bg-white p-4 w-3/4'>
+    <div className='flex flex-col md:flex-row gap-4 bg-white p-4 w-full md:w-3/4'>
       {/* <div className='flex-1 text-center'> */}
       {/* Grafik Pemasukan */}
       <div className='flex-1 text-center'>

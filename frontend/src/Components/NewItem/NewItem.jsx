@@ -5,6 +5,7 @@ import { useProducts } from '../../hooks/useProducts';
 import { useDebts } from '../../hooks/useDebts';
 import { useStockLogs } from '../../hooks/useStockLogs';
 import { getProducts } from '../../services/productService';
+import api from '../../services/api';
 import Swal from 'sweetalert2';
 
 /* eslint-disable camelcase */
@@ -31,14 +32,20 @@ function TransactionForm() {
   const [amount, setAmount] = useState('');
   const [type, setType] = useState('income');
   const [submitting, setSubmitting] = useState(false);
-  const [categories] = useState([
-    { id: 1, name: 'Penjualan' },
-    { id: 2, name: 'Restok' },
-    { id: 3, name: 'Operasional' },
-    { id: 4, name: 'Gaji Karyawan' },
-    { id: 5, name: 'Bayar Hutang' },
-    { id: 6, name: 'Hutang Pelanggan' },
-  ]);
+  const [categories, setCategories] = useState([]);
+
+  // Kategori diambil dari backend (bukan hardcode) agar id-nya selalu sesuai database
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const res = await api.get('/categories');
+        setCategories(res.data || []);
+      } catch (err) {
+        Swal.fire('Error', 'Gagal memuat daftar kategori', 'error');
+      }
+    };
+    fetchCategories();
+  }, []);
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();

@@ -4,6 +4,7 @@ import {
   getTransactionById,
   updateTransaction,
 } from '../../../services/transactionService';
+import api from '../../../services/api';
 import Swal from 'sweetalert2';
 
 function EditTransaction() {
@@ -18,18 +19,14 @@ function EditTransaction() {
   });
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
-  const [categories, setCategories] = useState([
-    { id: 1, name: 'Penjualan' },
-    { id: 2, name: 'Restok' },
-    { id: 3, name: 'Operasional' },
-    { id: 4, name: 'Gaji Karyawan' },
-    { id: 5, name: 'Bayar Hutang' },
-    { id: 6, name: 'Hutang Pelanggan' },
-  ]);
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        // Kategori diambil dari backend agar id-nya selalu sesuai database
+        const catRes = await api.get('/categories');
+        setCategories(catRes.data || []);
         const response = await getTransactionById(id);
         const tx = response.data;
         setFormData({
