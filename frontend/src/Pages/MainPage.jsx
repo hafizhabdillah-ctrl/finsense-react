@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   LuNotebookPen,
@@ -110,13 +110,131 @@ function LogoMark() {
   );
 }
 
+function LandingSkeleton() {
+  return (
+    <div className='min-h-screen bg-white font-poppins'>
+      <div className='h-20 border-b border-slate-200 px-5 sm:px-8'>
+        <div className='mx-auto flex h-full max-w-7xl items-center justify-between'>
+          <div className='h-8 w-32 animate-pulse rounded bg-slate-200' />
+          <div className='hidden gap-8 md:flex'>
+            <div className='h-4 w-14 animate-pulse rounded bg-slate-200' />
+            <div className='h-4 w-20 animate-pulse rounded bg-slate-200' />
+            <div className='h-4 w-12 animate-pulse rounded bg-slate-200' />
+          </div>
+          <div className='h-10 w-36 animate-pulse rounded-lg bg-slate-200' />
+        </div>
+      </div>
+      <div className='px-5 py-16 sm:px-8 md:py-24'>
+        <div className='mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2'>
+          <div className='space-y-4'>
+            <div className='h-10 w-full max-w-md animate-pulse rounded bg-slate-200' />
+            <div className='h-10 w-3/4 animate-pulse rounded bg-slate-200' />
+            <div className='h-4 w-full max-w-lg animate-pulse rounded bg-slate-200' />
+            <div className='h-4 w-2/3 max-w-lg animate-pulse rounded bg-slate-200' />
+            <div className='h-12 w-44 animate-pulse rounded-lg bg-slate-200' />
+          </div>
+          <div className='aspect-video w-full animate-pulse rounded-2xl bg-slate-200' />
+        </div>
+      </div>
+      <div className='bg-sky-950 px-5 py-20 sm:px-8'>
+        <div className='mx-auto max-w-7xl'>
+          <div className='mx-auto h-8 w-full max-w-md animate-pulse rounded bg-white/10' />
+          <div className='mx-auto mt-4 h-4 w-full max-w-sm animate-pulse rounded bg-white/10' />
+          <div className='mt-14 grid gap-6 sm:grid-cols-3'>
+            <div className='h-48 animate-pulse rounded-2xl bg-white/10' />
+            <div className='h-48 animate-pulse rounded-2xl bg-white/10' />
+            <div className='h-48 animate-pulse rounded-2xl bg-white/10' />
+          </div>
+        </div>
+      </div>
+      <div className='bg-slate-50 px-5 py-20 sm:px-8'>
+        <div className='mx-auto max-w-7xl'>
+          <div className='mx-auto h-8 w-full max-w-md animate-pulse rounded bg-slate-200' />
+          <div className='mt-14 grid gap-6 lg:grid-cols-[1.1fr_1fr]'>
+            <div className='h-80 animate-pulse rounded-2xl bg-slate-200' />
+            <div className='grid gap-4 sm:grid-cols-2'>
+              <div className='h-36 animate-pulse rounded-2xl bg-slate-200' />
+              <div className='h-36 animate-pulse rounded-2xl bg-slate-200' />
+              <div className='h-36 animate-pulse rounded-2xl bg-slate-200' />
+              <div className='h-36 animate-pulse rounded-2xl bg-slate-200' />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className='bg-sky-950 px-5 py-20 sm:px-8'>
+        <div className='mx-auto max-w-7xl'>
+          <div className='mx-auto h-8 w-full max-w-sm animate-pulse rounded bg-white/10' />
+          <div className='mt-14 grid gap-8 sm:grid-cols-3'>
+            <div className='h-28 animate-pulse rounded-2xl bg-white/10' />
+            <div className='h-28 animate-pulse rounded-2xl bg-white/10' />
+            <div className='h-28 animate-pulse rounded-2xl bg-white/10' />
+          </div>
+        </div>
+      </div>
+      <div className='bg-slate-50 px-5 py-20 sm:px-8'>
+        <div className='mx-auto grid max-w-7xl items-center gap-12 md:grid-cols-2'>
+          <div className='space-y-3'>
+            <div className='h-6 w-40 animate-pulse rounded bg-slate-200' />
+            <div className='h-8 w-64 animate-pulse rounded bg-slate-200' />
+            <div className='h-4 w-full animate-pulse rounded bg-slate-200' />
+          </div>
+          <div className='aspect-video w-full animate-pulse rounded-2xl bg-slate-200' />
+        </div>
+      </div>
+      <div className='bg-white px-5 py-20 sm:px-8'>
+        <div className='mx-auto grid max-w-7xl items-center gap-12 md:grid-cols-2'>
+          <div className='aspect-video w-full animate-pulse rounded-2xl bg-slate-200' />
+          <div className='space-y-3'>
+            <div className='h-6 w-40 animate-pulse rounded bg-slate-200' />
+            <div className='h-8 w-64 animate-pulse rounded bg-slate-200' />
+            <div className='h-4 w-full animate-pulse rounded bg-slate-200' />
+          </div>
+        </div>
+      </div>
+      <div className='bg-slate-50 px-5 py-20 sm:px-8'>
+        <div className='mx-auto max-w-3xl'>
+          <div className='mx-auto h-8 w-full max-w-sm animate-pulse rounded bg-slate-200' />
+          <div className='mt-10 space-y-3'>
+            {[0, 1, 2, 3, 4].map((i) => (
+              <div key={i} className='h-14 animate-pulse rounded-2xl bg-slate-200' />
+            ))}
+          </div>
+        </div>
+      </div>
+      <div className='bg-slate-900 px-5 py-20 sm:px-8'>
+        <div className='mx-auto max-w-3xl space-y-4 text-center'>
+          <div className='mx-auto h-8 w-full max-w-sm animate-pulse rounded bg-white/10' />
+          <div className='mx-auto h-4 w-full max-w-md animate-pulse rounded bg-white/10' />
+          <div className='mx-auto h-12 w-52 animate-pulse rounded-lg bg-white/10' />
+        </div>
+      </div>
+      <div className='bg-slate-950 px-5 py-14 sm:px-8'>
+        <div className='mx-auto grid max-w-7xl gap-10 md:grid-cols-4'>
+          <div className='h-24 animate-pulse rounded bg-white/10' />
+          <div className='h-24 animate-pulse rounded bg-white/10' />
+          <div className='h-24 animate-pulse rounded bg-white/10' />
+          <div className='h-24 animate-pulse rounded bg-white/10' />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function MainPage() {
   const navigate = useNavigate();
   const [openFaq, setOpenFaq] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 900);
+    return () => clearTimeout(timer);
+  }, []);
 
   const scrollToSection = (sectionId) => document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
 
   const toggleFaq = (index) => setOpenFaq((prev) => (prev === index ? null : index));
+
+  if (loading) return <LandingSkeleton />;
 
   return (
     <div className='min-h-screen bg-white font-poppins'>
@@ -183,22 +301,22 @@ function MainPage() {
         </section>
 
         {/* Problems */}
-        <section id='masalah' className='bg-white px-5 py-20 sm:px-8 md:py-24'>
+        <section id='masalah' className='relative overflow-hidden bg-sky-950 bg-[radial-gradient(circle_at_15%_15%,rgba(249,115,22,0.12),transparent_40%)] px-5 py-20 sm:px-8 md:py-24'>
           <div className='mx-auto max-w-7xl'>
             <div className='mx-auto max-w-2xl text-center'>
-              <h2 className='text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl'>Masalah yang tiap hari dialami pemilik warung</h2>
-              <p className='mt-4 text-base leading-7 text-slate-600'>Banyak hal kecil di warung yang bikin pusing dari hari ke hari.</p>
+              <h2 className='text-3xl font-bold tracking-tight text-white sm:text-4xl'>Masalah yang tiap hari dialami pemilik warung</h2>
+              <p className='mt-4 text-base leading-7 text-slate-300'>Banyak hal kecil di warung yang bikin pusing dari hari ke hari.</p>
             </div>
             <div className='mt-14 grid gap-6 sm:grid-cols-3'>
               {problems.map((problem) => {
                 const Icon = problem.icon;
                 return (
-                  <div key={problem.title} className='rounded-2xl border border-slate-200 bg-slate-50 p-7 transition hover:-translate-y-1 hover:shadow-lg'>
-                    <div className='mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-orange-100 text-orange-600'>
+                  <div key={problem.title} className='rounded-2xl border border-white/10 bg-white/5 p-7 transition hover:-translate-y-1 hover:border-orange-500/40 hover:bg-white/10'>
+                    <div className='mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-orange-500/15 text-orange-400'>
                       <Icon className='h-6 w-6' />
                     </div>
-                    <h3 className='text-lg font-bold text-slate-900'>{problem.title}</h3>
-                    <p className='mt-3 text-sm leading-6 text-slate-600'>{problem.text}</p>
+                    <h3 className='text-lg font-bold text-white'>{problem.title}</h3>
+                    <p className='mt-3 text-sm leading-6 text-slate-300'>{problem.text}</p>
                   </div>
                 );
               })}
@@ -244,18 +362,18 @@ function MainPage() {
         </section>
 
         {/* Steps */}
-        <section id='cara-kerja' className='bg-white px-5 py-20 sm:px-8 md:py-24'>
+        <section id='cara-kerja' className='relative overflow-hidden bg-sky-950 bg-[radial-gradient(circle_at_15%_15%,rgba(249,115,22,0.12),transparent_40%)] px-5 py-20 sm:px-8 md:py-24'>
           <div className='mx-auto max-w-7xl'>
             <div className='mx-auto max-w-2xl text-center'>
-              <h2 className='text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl'>Mulai dalam 5 menit</h2>
-              <p className='mt-4 text-base leading-7 text-slate-600'>Tanpa ribet, tanpa instalasi hardware, atau kursus rumit.</p>
+              <h2 className='text-3xl font-bold tracking-tight text-white sm:text-4xl'>Mulai dalam 5 menit</h2>
+              <p className='mt-4 text-base leading-7 text-slate-300'>Tanpa ribet, tanpa instalasi hardware, atau kursus rumit.</p>
             </div>
             <div className='mt-14 grid gap-8 text-left sm:grid-cols-3'>
               {steps.map((step) => (
                 <div key={step.number}>
                   <div className='flex h-12 w-12 items-center justify-center rounded-full bg-orange-500 text-lg font-bold text-white'>{step.number}</div>
-                  <h3 className='mt-5 text-lg font-bold text-slate-900'>{step.title}</h3>
-                  <p className='mt-2 text-sm leading-6 text-slate-600'>{step.text}</p>
+                  <h3 className='mt-5 text-lg font-bold text-white'>{step.title}</h3>
+                  <p className='mt-2 text-sm leading-6 text-slate-300'>{step.text}</p>
                 </div>
               ))}
             </div>
@@ -309,9 +427,13 @@ function MainPage() {
                       className='flex w-full items-center justify-between gap-4 px-6 py-5 text-left text-sm font-semibold text-slate-900'
                     >
                       <span>{faq.question}</span>
-                      <LuChevronDown className={`h-4 w-4 shrink-0 text-slate-400 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+                      <LuChevronDown className={`h-4 w-4 shrink-0 text-slate-400 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
                     </button>
-                    {isOpen && <p className='px-6 pb-5 text-sm leading-6 text-slate-600'>{faq.answer}</p>}
+                    <div className={`grid overflow-hidden transition-[grid-template-rows] duration-300 ease-in-out ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
+                      <div className='overflow-hidden'>
+                        <p className='px-6 pb-5 text-sm leading-6 text-slate-600'>{faq.answer}</p>
+                      </div>
+                    </div>
                   </div>
                 );
               })}
@@ -330,7 +452,6 @@ function MainPage() {
             >
               Mulai Gratis Sekarang
             </button>
-            <p className='mt-4 text-xs text-slate-400'>Daftar dalam 1 menit &bull; Tidak butuh kartu kredit</p>
           </div>
         </section>
       </main>
