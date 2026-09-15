@@ -243,7 +243,7 @@ function MainPage() {
           <div className='flex h-20 items-center justify-between'>
             <button onClick={() => scrollToSection('hero')} className='flex items-center gap-2 text-xl font-bold tracking-tight text-slate-900 md:text-2xl'>
               <LogoMark />
-              Fin<span className='text-orange-500'>Sense</span>
+              <span>Fin<span className='text-orange-500'>Sense</span></span>
             </button>
             <div className='hidden items-center gap-8 text-sm font-medium text-slate-600 md:flex'>
               <button onClick={() => scrollToSection('fitur')} className='transition-colors hover:text-orange-500'>Fitur</button>
@@ -461,7 +461,7 @@ function MainPage() {
           <div>
             <div className='flex items-center gap-2 text-xl font-bold text-white'>
               <LogoMark />
-              Fin<span className='text-orange-500'>Sense</span>
+              <span>Fin<span className='text-orange-500'>Sense</span></span>
             </div>
             <p className='mt-3 max-w-xs text-sm leading-6'>POS Kasir Suara untuk pemilik warung dan UMKM di Indonesia.</p>
           </div>
