@@ -187,7 +187,7 @@ function Chat() {
     flex items-center justify-center
     ${
       isOpen
-        ? 'bg-red-500 hover:bg-red-600 rotate-90 scale-90 md:hidden' // Sembunyikan di tablet/laptop saat chat terbuka
+        ? 'bg-red-500 hover:bg-red-600 rotate-90 scale-90 md:hidden text-white' // Sembunyikan di tablet/laptop saat chat terbuka
         : 'bg-sky-950 hover:bg-sky-800 hover:-translate-y-1 text-white'
     }
   `}

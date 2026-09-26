@@ -237,7 +237,7 @@ function MainPage() {
   if (loading) return <LandingSkeleton />;
 
   return (
-    <div className='min-h-screen bg-white font-poppins'>
+    <div className='min-h-screen bg-white font-poppins text-slate-900'>
       <nav className='sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur-xl'>
         <div className='mx-auto max-w-7xl px-5 sm:px-8'>
           <div className='flex h-20 items-center justify-between'>
@@ -459,7 +459,7 @@ function MainPage() {
       <footer className='bg-slate-950 px-5 py-14 text-slate-400 sm:px-8'>
         <div className='mx-auto grid max-w-7xl gap-10 md:grid-cols-[1.3fr_1fr_1fr_1fr]'>
           <div>
-            <div className='flex items-center gap-2 text-xl font-bold text-white'>
+            <div className='flex items-center gap-2 text-xl font-bold tracking-tight text-white'>
               <LogoMark />
               <span>Fin<span className='text-orange-500'>Sense</span></span>
             </div>
