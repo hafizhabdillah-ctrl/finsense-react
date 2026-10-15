@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { getProducts } from '../../../services/productService';
-import { useCart } from '../../../hooks/useCart';
 import { FaMicrophone, FaSearch, FaSyncAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import api from '../../../services/api';
@@ -89,9 +87,9 @@ function parseJumlah(transcript) {
   return cand;
 }
 
-function InputPos() {
+// products & addItem berasal dari PosPage (satu sumber data untuk seluruh halaman POS)
+function InputPos({ products = [], addItem }) {
   const [query, setQuery] = useState('');
-  const [products, setProducts] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [isListening, setIsListening] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -101,19 +99,6 @@ function InputPos() {
   const recognitionRef = useRef(null);
   const mediaRecorderRef = useRef(null);
   const audioChunksRef = useRef([]);
-  const { addItem } = useCart();
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const res = await getProducts();
-        setProducts(res.data);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    fetchProducts();
-  }, []);
 
   useEffect(() => {
     if (query.length > 1) {
@@ -142,8 +127,6 @@ function InputPos() {
       text: `${product.name} ditambahkan ke keranjang`,
       timer: 1500,
       showConfirmButton: false,
-    }).then(() => {
-      window.location.reload();
     });
     // Kosongkan input dan daftar filter
     setQuery('');
@@ -295,7 +278,6 @@ function InputPos() {
             'Produk ditambahkan ke keranjang',
             'success',
           );
-          window.location.reload();
         }
       } else {
         let top3Text = '';
@@ -316,7 +298,6 @@ function InputPos() {
           icon: 'info',
           confirmButtonText: 'OK',
         });
-        window.location.reload();
       }
     } catch (err) {
       console.error(err);

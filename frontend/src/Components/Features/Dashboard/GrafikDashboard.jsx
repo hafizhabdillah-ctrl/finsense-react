@@ -9,8 +9,8 @@ import {
   Title,
   Tooltip,
   Legend,
+  Filler,
 } from 'chart.js';
-import { useDashboardData } from '../../../hooks/useDashboardData';
 
 ChartJS.register(
   CategoryScale,
@@ -20,10 +20,10 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
+  Filler,
 );
 
-function GrafikDashboard() {
-  const { chartData, loading } = useDashboardData();
+function GrafikDashboard({ chartData, loading }) {
 
   const data = {
     labels: chartData.dates,

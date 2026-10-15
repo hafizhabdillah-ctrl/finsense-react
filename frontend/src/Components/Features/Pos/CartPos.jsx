@@ -1,4 +1,3 @@
-import { useCart } from '../../../hooks/useCart';
 import { useAuth } from '../../../context/AuthContext';
 import { createTransaction } from '../../../services/transactionService';
 import { updateStock, getProductById } from '../../../services/productService';
@@ -6,8 +5,9 @@ import Swal from 'sweetalert2';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 
-function CartPos() {
-  const { cart, removeItem, updateItem, emptyCart } = useCart();
+// cart & aksi keranjang berasal dari PosPage, sehingga item yang ditambahkan
+// dari InputPos/FrequentlyPos langsung tampil di sini
+function CartPos({ cart = [], removeItem, updateItem, emptyCart }) {
   const { user } = useAuth();
   const subtotal = cart.reduce((acc, item) => acc + item.price * item.qty, 0);
 

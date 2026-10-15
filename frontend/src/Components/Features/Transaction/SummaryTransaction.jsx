@@ -1,12 +1,10 @@
 import React, { useMemo } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-import { useTransactions } from '../../../hooks/useTransactions';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-function SummaryTransaction() {
-  const { transactions, loading } = useTransactions();
+function SummaryTransaction({ transactions = [] }) {
 
   const getChartData = (type) => {
     const filtered = transactions.filter((t) => t.type === type);

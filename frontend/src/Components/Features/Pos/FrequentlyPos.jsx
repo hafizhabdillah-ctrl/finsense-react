@@ -1,23 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { getProducts } from '../../../services/productService';
-import { useCart } from '../../../hooks/useCart';
+import React from 'react';
 import Swal from 'sweetalert2';
 
-function FrequentlyPos() {
-  const [products, setProducts] = useState([]);
-  const { addItem } = useCart();
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const res = await getProducts();
-        setProducts(res.data.slice(0, 6));
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    fetchProducts();
-  }, []);
+// products & addItem berasal dari PosPage (satu sumber data untuk seluruh halaman POS)
+function FrequentlyPos({ products: allProducts = [], addItem }) {
+  const products = allProducts.slice(0, 6);
 
   const handleAdd = (product) => {
     addItem({
@@ -32,8 +18,6 @@ function FrequentlyPos() {
       text: `${product.name} ditambahkan ke keranjang`,
       timer: 1500,
       showConfirmButton: false,
-    }).then(() => {
-      window.location.reload();
     });
   };
 

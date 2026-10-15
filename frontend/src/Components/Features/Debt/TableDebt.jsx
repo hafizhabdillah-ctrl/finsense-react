@@ -1,10 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDebts } from '../../../hooks/useDebts';
 
-function TableDebt({ searchTerm = '' }) {
+function TableDebt({ debts = [], loading = false, searchTerm = '' }) {
   const navigate = useNavigate();
-  const { debts, loading } = useDebts();
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
 

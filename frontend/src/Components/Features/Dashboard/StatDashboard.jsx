@@ -1,16 +1,12 @@
 import React from 'react';
-import { useDashboardData } from '../../../hooks/useDashboardData';
 
-const StatDashboard = () => {
-  const {
-    todayIncome,
-    todayCount,
-    averageOrder,
-    loading,
-    revenuePrediction,
-    predictionMessage,
-  } = useDashboardData();
-
+const StatDashboard = ({
+  todayIncome,
+  todayCount,
+  loading,
+  revenuePrediction,
+  predictionMessage,
+}) => {
   if (loading) {
     return <div className='flex gap-4'>Memuat statistik...</div>;
   }

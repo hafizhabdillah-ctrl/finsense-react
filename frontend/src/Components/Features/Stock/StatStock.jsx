@@ -1,8 +1,6 @@
 import React from 'react';
-import { useProducts } from '../../../hooks/useProducts';
 
-function StatStock() {
-  const { products, loading } = useProducts();
+function StatStock({ products = [], loading = false }) {
   const totalProducts = products.length;
   const lowStock = products.filter((p) => p.stock <= p.min_stock).length;
 

@@ -4,9 +4,12 @@ import TableDebt from '../../Components/Features/Debt/TableDebt';
 import { useNavigate } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
 import { FaCirclePlus } from 'react-icons/fa6';
+import { useDebts } from '../../hooks/useDebts';
 function Debtpage() {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
+  // Data diambil sekali di level halaman, lalu dibagikan ke statistik & tabel
+  const { debts, loading } = useDebts();
 
   return (
     <div>
@@ -29,7 +32,7 @@ function Debtpage() {
           <span>Tambah Hutang baru</span>
         </button>
       </div>
-      <StatDebt />
+      <StatDebt debts={debts} loading={loading} />
 
       {/* Search Bar */}
       <div className='relative mt-4 max-w-md'>
@@ -44,7 +47,7 @@ function Debtpage() {
       </div>
 
       <div className='overflow-x-auto mt-2'>
-        <TableDebt searchTerm={searchTerm} />
+        <TableDebt debts={debts} loading={loading} searchTerm={searchTerm} />
       </div>
     </div>
   );

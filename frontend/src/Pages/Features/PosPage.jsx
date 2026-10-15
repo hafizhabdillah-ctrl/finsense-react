@@ -5,9 +5,15 @@ import CartPos from '../../Components/Features/Pos/CartPos';
 import { useNavigate } from 'react-router-dom';
 
 import { FaCirclePlus } from 'react-icons/fa6';
+import { useProducts } from '../../hooks/useProducts';
+import { useCart } from '../../hooks/useCart';
 
 function PosPage() {
   const navigate = useNavigate();
+  // Produk diambil sekali dan keranjang dikelola di satu state level halaman,
+  // sehingga perubahan keranjang langsung tampil tanpa memuat ulang halaman
+  const { products } = useProducts();
+  const { cart, addItem, updateItem, removeItem, emptyCart } = useCart();
 
   return (
     <div className='h-full flex flex-col'>
@@ -32,11 +38,16 @@ function PosPage() {
       </div>
       <div className='flex flex-col lg:flex-row gap-4 mt-4 flex-1'>
         <div className='flex flex-col gap-4 lg:w-3/4'>
-          <InputPos />
-          <FrequentlyPos />
+          <InputPos products={products} addItem={addItem} />
+          <FrequentlyPos products={products} addItem={addItem} />
         </div>
         <div className='border border-gray-400 rounded-md w-full lg:w-1/4'>
-          <CartPos />
+          <CartPos
+            cart={cart}
+            updateItem={updateItem}
+            removeItem={removeItem}
+            emptyCart={emptyCart}
+          />
         </div>
       </div>
     </div>

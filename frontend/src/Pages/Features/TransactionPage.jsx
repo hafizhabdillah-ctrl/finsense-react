@@ -5,9 +5,20 @@ import SummaryTransaction from '../../Components/Features/Transaction/SummaryTra
 import { useNavigate } from 'react-router-dom';
 import { FaCirclePlus } from 'react-icons/fa6';
 import { FaCalendarAlt } from 'react-icons/fa';
+import { useTransactions } from '../../hooks/useTransactions';
+
+// Rentang BULAN INI (waktu lokal): tanggal 1 pukul 00:00 s/d tanggal terakhir pukul 23:59:59
+const now = new Date();
+const MONTH_RANGE = {
+  startDate: new Date(now.getFullYear(), now.getMonth(), 1, 0, 0, 0, 0).toISOString(),
+  endDate: new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59, 999).toISOString(),
+};
 
 function TransactionPage() {
   const navigate = useNavigate();
+  // Data diambil sekali di level halaman: semua transaksi (tabel & ringkasan) + transaksi bulan ini (statistik)
+  const { transactions, loading } = useTransactions();
+  const { transactions: monthTransactions } = useTransactions(MONTH_RANGE);
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
 
@@ -37,7 +48,7 @@ function TransactionPage() {
           <FaCirclePlus size={16} /> Tambah Transaksi
         </button>
       </div>
-      <StatTransaction />
+      <StatTransaction transactions={monthTransactions} />
 
       {/* Filter Tanggal */}
       <div className='flex flex-wrap items-center gap-4 mt-4 px-2'>
@@ -71,13 +82,18 @@ function TransactionPage() {
       </div>
 
       <div className='overflow-x-auto mt-2'>
-        <TableTransaction startDate={startDate} endDate={endDate} />
+        <TableTransaction
+          transactions={transactions}
+          loading={loading}
+          startDate={startDate}
+          endDate={endDate}
+        />
       </div>
       <div className='mt-4'>
         <hr />
       </div>
       <h1 className='p-2 text-2xl font-bold mt-2'>Ringkasan Keuangan</h1>
-      <SummaryTransaction />
+      <SummaryTransaction transactions={transactions} />
     </div>
   );
 }

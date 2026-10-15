@@ -1,12 +1,4 @@
 import React, { useMemo } from 'react';
-import { useTransactions } from '../../../hooks/useTransactions';
-
-// Rentang BULAN INI (waktu lokal): tanggal 1 pukul 00:00 s/d tanggal terakhir pukul 23:59:59
-const now = new Date();
-const MONTH_RANGE = {
-  startDate: new Date(now.getFullYear(), now.getMonth(), 1, 0, 0, 0, 0).toISOString(),
-  endDate: new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59, 999).toISOString(),
-};
 
 const isThisMonth = (dateString) => {
   const d = new Date(dateString);
@@ -14,8 +6,8 @@ const isThisMonth = (dateString) => {
   return d.getFullYear() === today.getFullYear() && d.getMonth() === today.getMonth();
 };
 
-function StatTransaction() {
-  const { transactions } = useTransactions(MONTH_RANGE);
+// transactions: transaksi BULAN INI, diambil oleh TransactionPage
+function StatTransaction({ transactions = [] }) {
 
   // Pemasukan, pengeluaran, dan jumlah transaksi BULAN INI
   const totals = useMemo(() => {

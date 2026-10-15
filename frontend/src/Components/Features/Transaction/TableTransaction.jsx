@@ -1,10 +1,13 @@
 import React, { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useTransactions } from '../../../hooks/useTransactions';
 
-function TableTransaction({ startDate = '', endDate = '' }) {
+function TableTransaction({
+  transactions = [],
+  loading = false,
+  startDate = '',
+  endDate = '',
+}) {
   const navigate = useNavigate();
-  const { transactions, loading } = useTransactions();
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 

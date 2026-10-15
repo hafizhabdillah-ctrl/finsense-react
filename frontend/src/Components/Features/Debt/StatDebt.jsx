@@ -1,8 +1,6 @@
 import React from 'react';
-import { useDebts } from '../../../hooks/useDebts';
 
-function StatDebt() {
-  const { debts, loading } = useDebts();
+function StatDebt({ debts = [], loading = false }) {
 
   // Hitung total sisa hutang (total_debt - paid_amount) untuk status belum lunas
   const total = debts

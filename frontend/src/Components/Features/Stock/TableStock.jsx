@@ -1,10 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useProducts } from '../../../hooks/useProducts';
 
-function TableStock({ searchTerm = '' }) {
+function TableStock({ products = [], loading = false, searchTerm = '' }) {
   const navigate = useNavigate();
-  const { products, loading } = useProducts();
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 

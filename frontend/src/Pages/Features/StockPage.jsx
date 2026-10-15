@@ -4,10 +4,13 @@ import TableStock from '../../Components/Features/Stock/TableStock';
 import { useNavigate } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
 import { FaCirclePlus } from 'react-icons/fa6';
+import { useProducts } from '../../hooks/useProducts';
 
 function StockPage() {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
+  // Data diambil sekali di level halaman, lalu dibagikan ke statistik & tabel
+  const { products, loading } = useProducts();
 
   return (
     <div>
@@ -30,7 +33,7 @@ function StockPage() {
           <span>Tambah Stok baru</span>
         </button>
       </div>
-      <StatStock />
+      <StatStock products={products} loading={loading} />
 
       {/* Search Bar */}
       <div className='relative mt-4 max-w-md'>
@@ -45,7 +48,11 @@ function StockPage() {
       </div>
 
       <div className='overflow-x-auto mt-2'>
-        <TableStock searchTerm={searchTerm} />
+        <TableStock
+          products={products}
+          loading={loading}
+          searchTerm={searchTerm}
+        />
       </div>
     </div>
   );
